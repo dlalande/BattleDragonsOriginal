@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FCD3717-2D69-4ACB-BF65-7EBCFC104673}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dragons</RootNamespace>
+    <AssemblyName>Dragons</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ExpressionBlendVersion>5.0.30508.0</ExpressionBlendVersion>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PackageCertificateThumbprint>87BEF6AB2D523DD2439D098338151713AC259776</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Dragons_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxPackageDir>C:\Code\NYSVN\here-there-be-dragons\source\Dragons\AppPackages\</AppxPackageDir>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Converters\NullStateToVisibilityConverter.cs" />
+    <Compile Include="Common\ImageHelper.cs" />
+    <Compile Include="Common\SettingsFlyout.cs" />
+    <Compile Include="Common\SoundManager.cs" />
+    <Compile Include="Common\Toast.cs" />
+    <Compile Include="Services\LobbyService.cs" />
+    <Compile Include="Services\MatchService.cs" />
+    <Compile Include="Views\GameBoard.xaml.cs">
+      <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BoardButton.xaml.cs">
+      <DependentUpon>BoardButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OpponentBoard.xaml.cs">
+      <DependentUpon>OpponentBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayerBoard.xaml.cs">
+      <DependentUpon>PlayerBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SampleGameBoard.xaml.cs">
+      <DependentUpon>SampleGameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\NewGameSettings.xaml.cs">
+      <DependentUpon>NewGameSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\DisplaySettings.xaml.cs">
+      <DependentUpon>DisplaySettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DelegateCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Views\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Resource Include="Assets\fonts\celtic.ttf" />
+    <Resource Include="Assets\fonts\CelticHand.ttf" />
+    <None Include="Common\ReadMe.txt" />
+    <None Include="Dragons_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\buttons\backbutton.png" />
+    <Content Include="Assets\buttons\body.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\buttons\bodybone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\buttons\emptymana.png" />
+    <Content Include="Assets\buttons\FireBall-psd32690.png" />
+    <Content Include="Assets\buttons\scorched2.png" />
+    <Content Include="Assets\buttons\scorched3.png" />
+    <Content Include="Assets\buttons\scorched1.jpg" />
+    <Content Include="Assets\buttons\wizarddead.png" />
+    <Content Include="Assets\buttons\wizardonfire.png" />
+    <Content Include="Assets\darkbackground.jpg" />
+    <Content Include="Assets\buttons\fire.png" />
+    <Content Include="Assets\buttons\head.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\buttons\headbone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icons\backbutton.png" />
+    <Content Include="Assets\icons\boltused.png" />
+    <Content Include="Assets\icons\dragonfuryused.png" />
+    <Content Include="Assets\icons\emptymana.png" />
+    <Content Include="Assets\icons\explodeused.png" />
+    <Content Include="Assets\icons\horizontal blastused.png" />
+    <Content Include="Assets\icons\manabottle.png" />
+    <Content Include="Assets\icons\restused.png" />
+    <Content Include="Assets\icons\scanused.png" />
+    <Content Include="Assets\icons\vertical blastused.png" />
+    <Content Include="Assets\icons\dragon2.png" />
+    <Content Include="Assets\icons\dragon3a.png" />
+    <Content Include="Assets\icons\dragon3b.png" />
+    <Content Include="Assets\icons\dragon4.png" />
+    <Content Include="Assets\icons\dragon5.png" />
+    <Content Include="Assets\icons\dragon_retaliate.png" />
+    <Content Include="Assets\icons\largemana.png" />
+    <Content Include="Assets\icons\mediummana.png" />
+    <Content Include="Assets\icons\smallmana.png" />
+    <Content Include="Assets\logos\herebedragons310x150.png" />
+    <Content Include="Assets\logos\herebedragons620x300.png" />
+    <Content Include="Assets\icons\bolt.png" />
+    <Content Include="Assets\icons\button.png" />
+    <Content Include="Assets\icons\cast.png" />
+    <Content Include="Assets\icons\dragonfury.png" />
+    <Content Include="Assets\icons\explode.png" />
+    <Content Include="Assets\icons\horizontal blast.png" />
+    <Content Include="Assets\icons\mana.png" />
+    <Content Include="Assets\icons\rest.png" />
+    <Content Include="Assets\icons\scan.png" />
+    <Content Include="Assets\icons\vertical blast.png" />
+    <Content Include="Assets\logos\Logo.png" />
+    <Content Include="Assets\buttons\mana.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\buttons\muddark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\buttons\mudlight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\logos\StoreLogo.png" />
+    <Content Include="Assets\logos\storelogo50x50.scale-100.png" />
+    <Content Include="Assets\newbackground.png" />
+    <Content Include="Assets\newbackground_no_title.jpg" />
+    <Content Include="Assets\scrollbackground.png" />
+    <Content Include="Assets\sounds\bloodstorm.mp3" />
+    <Content Include="Assets\sounds\cast.mp3" />
+    <Content Include="Assets\sounds\dragon death roar.mp3" />
+    <Content Include="Assets\sounds\dragonfury.mp3" />
+    <Content Include="Assets\sounds\dragonpiecereveal.mp3" />
+    <Content Include="Assets\sounds\explode.mp3" />
+    <Content Include="Assets\sounds\fireball.mp3" />
+    <Content Include="Assets\sounds\foundmana.mp3" />
+    <Content Include="Assets\sounds\gamestarts.mp3" />
+    <Content Include="Assets\sounds\gulp.mp3" />
+    <Content Include="Assets\sounds\healdragons.mp3" />
+    <Content Include="Assets\sounds\icestrike2.mp3" />
+    <Content Include="Assets\sounds\newmana.mp3" />
+    <Content Include="Assets\sounds\newround.mp3" />
+    <Content Include="Assets\sounds\recharge.mp3" />
+    <Content Include="Assets\sounds\revealground.mp3" />
+    <Content Include="Assets\sounds\scan2.mp3" />
+    <Content Include="Assets\sounds\thememusic.mp3" />
+    <Content Include="Assets\logos\SplashScreen.scale-100.png" />
+    <Content Include="Assets\logos\storelogo150x150.png" />
+    <Content Include="Assets\logos\storelogo30x30.png" />
+    <Content Include="Assets\logos\storelogo50x50.png" />
+    <Content Include="Assets\buttons\wizardwithmagic.png" />
+    <Content Include="Assets\buttons\wizardwithoutmagic.png" />
+    <Content Include="Assets\sounds\wizard death scream.mp3" />
+    <Content Include="Assets\sounds\wizardfire.mp3" />
+    <Content Include="Assets\sounds\wizardlaugh.mp3" />
+    <Content Include="Assets\sounds\YOULOSE.mp3" />
+    <Content Include="Assets\title.png" />
+    <Content Include="Views\SampleData\SettingsSampleData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+    <Page Include="Views\BoardButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OpponentBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayerBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SampleGameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\NewGameSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HelpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\DisplaySettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dragons.Shared\Dragons.Shared.csproj">
+      <Project>{0c7035fa-5e30-4b94-95a1-740feba247d0}</Project>
+      <Name>Dragons.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\netcore45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

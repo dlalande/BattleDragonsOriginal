@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{195B4CE0-94A7-4DB1-ADC2-794D8CABE52C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Dragons</RootNamespace>
+    <AssemblyName>Dragons</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\LobbyService.cs" />
+    <Compile Include="Services\MatchService.cs" />
+    <Compile Include="Views\BoardButton.xaml.cs">
+      <DependentUpon>BoardButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameBoard.xaml.cs">
+      <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OpponentBoard.xaml.cs">
+      <DependentUpon>OpponentBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayerBoard.xaml.cs">
+      <DependentUpon>PlayerBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SampleGameBoard.xaml.cs">
+      <DependentUpon>SampleGameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\DisplaySettings.xaml.cs">
+      <DependentUpon>DisplaySettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\NewGameSettings.xaml.cs">
+      <DependentUpon>NewGameSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\Converters\NullStateToVisibilityConverter.cs" />
+    <Compile Include="Common\DelegateCommand.cs" />
+    <Compile Include="Common\ImageHelper.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SettingsFlyout.cs" />
+    <Compile Include="Common\SoundManager.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Common\Toast.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Assets\fonts\celtic.ttf" />
+    <Resource Include="Assets\fonts\CelticHand.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Common\ReadMe.txt" />
+    <Resource Include="Assets\buttons\backbutton.png" />
+    <Resource Include="Assets\buttons\body.png" />
+    <Resource Include="Assets\buttons\bodybone.png" />
+    <Resource Include="Assets\buttons\emptymana.png" />
+    <Resource Include="Assets\buttons\fire.png" />
+    <Resource Include="Assets\buttons\FireBall-psd32690.png" />
+    <Resource Include="Assets\buttons\head.png" />
+    <Resource Include="Assets\buttons\headbone.png" />
+    <Resource Include="Assets\buttons\mana.png" />
+    <Resource Include="Assets\buttons\muddark.png" />
+    <Resource Include="Assets\buttons\mudlight.png" />
+    <Resource Include="Assets\buttons\scorched1.jpg" />
+    <Resource Include="Assets\buttons\scorched2.png" />
+    <Resource Include="Assets\buttons\scorched3.png" />
+    <Resource Include="Assets\buttons\wizarddead.png" />
+    <Resource Include="Assets\buttons\wizardonfire.png" />
+    <Resource Include="Assets\buttons\wizardwithmagic.png" />
+    <Resource Include="Assets\buttons\wizardwithoutmagic.png" />
+    <Resource Include="Assets\darkbackground.jpg" />
+    <Resource Include="Assets\icons\backbutton.png" />
+    <Resource Include="Assets\icons\bolt.png" />
+    <Resource Include="Assets\icons\boltused.png" />
+    <Resource Include="Assets\icons\button.png" />
+    <Resource Include="Assets\icons\cast.png" />
+    <Resource Include="Assets\icons\dragon2.png" />
+    <Resource Include="Assets\icons\dragon3a.png" />
+    <Resource Include="Assets\icons\dragon3b.png" />
+    <Resource Include="Assets\icons\dragon4.png" />
+    <Resource Include="Assets\icons\dragon5.png" />
+    <Resource Include="Assets\icons\dragonfury.png" />
+    <Resource Include="Assets\icons\dragonfuryused.png" />
+    <Resource Include="Assets\icons\dragon_retaliate.png" />
+    <Resource Include="Assets\icons\emptymana.png" />
+    <Resource Include="Assets\icons\explode.png" />
+    <Resource Include="Assets\icons\explodeused.png" />
+    <Resource Include="Assets\icons\horizontal blast.png" />
+    <Resource Include="Assets\icons\horizontal blastused.png" />
+    <Resource Include="Assets\icons\largemana.png" />
+    <Resource Include="Assets\icons\mana.png" />
+    <Resource Include="Assets\icons\manabottle.png" />
+    <Resource Include="Assets\icons\mediummana.png" />
+    <Resource Include="Assets\icons\rest.png" />
+    <Resource Include="Assets\icons\restused.png" />
+    <Resource Include="Assets\icons\scan.png" />
+    <Resource Include="Assets\icons\scanused.png" />
+    <Resource Include="Assets\icons\smallmana.png" />
+    <Resource Include="Assets\icons\vertical blast.png" />
+    <Resource Include="Assets\icons\vertical blastused.png" />
+    <Resource Include="Assets\logos\herebedragons310x150.png" />
+    <Resource Include="Assets\logos\herebedragons620x300.png" />
+    <Resource Include="Assets\logos\Logo.png" />
+    <Resource Include="Assets\logos\SplashScreen.scale-100.png" />
+    <Resource Include="Assets\logos\StoreLogo.png" />
+    <Resource Include="Assets\logos\storelogo150x150.png" />
+    <Resource Include="Assets\logos\storelogo30x30.png" />
+    <Resource Include="Assets\logos\storelogo50x50.png" />
+    <Resource Include="Assets\logos\storelogo50x50.scale-100.png" />
+    <Resource Include="Assets\newbackground.png" />
+    <Resource Include="Assets\newbackground_no_title.jpg" />
+    <Resource Include="Assets\scrollbackground.png" />
+    <Content Include="Assets\sounds\bloodstorm.mp3" />
+    <Content Include="Assets\sounds\cast.mp3" />
+    <Content Include="Assets\sounds\dragon death roar.mp3" />
+    <Content Include="Assets\sounds\dragonfury.mp3" />
+    <Content Include="Assets\sounds\dragonpiecereveal.mp3" />
+    <Content Include="Assets\sounds\explode.mp3" />
+    <Content Include="Assets\sounds\fireball.mp3" />
+    <Content Include="Assets\sounds\foundmana.mp3" />
+    <Content Include="Assets\sounds\gamestarts.mp3" />
+    <Content Include="Assets\sounds\gulp.mp3" />
+    <Content Include="Assets\sounds\healdragons.mp3" />
+    <Content Include="Assets\sounds\icestrike2.mp3" />
+    <Content Include="Assets\sounds\newmana.mp3" />
+    <Content Include="Assets\sounds\newround.mp3" />
+    <Content Include="Assets\sounds\recharge.mp3" />
+    <Content Include="Assets\sounds\revealground.mp3" />
+    <Content Include="Assets\sounds\scan2.mp3" />
+    <Content Include="Assets\sounds\thememusic.mp3" />
+    <Content Include="Assets\sounds\wizard death scream.mp3" />
+    <Content Include="Assets\sounds\wizardfire.mp3" />
+    <Content Include="Assets\sounds\wizardlaugh.mp3" />
+    <Content Include="Assets\sounds\YOULOSE.mp3" />
+    <Resource Include="Assets\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BoardButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GameBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HelpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OpponentBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlayerBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SampleData\SettingsSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SampleGameBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\DisplaySettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\NewGameSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StartPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="Arkadium.Dragons" Publisher="C=US, S=Washington, L=Redmond, O=Microsoft Corporation, CN=Microsoft Corporation" Version="0.1.0.0" />
+  <Properties>
+    <DisplayName>Here Be Dragons</DisplayName>
+    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <Logo>Assets\logos\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Dragons.App">
+      <VisualElements DisplayName="Dragons" Logo="Assets\logos\storelogo150x150.png" SmallLogo="Assets\logos\storelogo30x30.png" Description="Dragons" ForegroundText="light" BackgroundColor="#000000" ToastCapable="true">
+        <DefaultTile ShowName="noLogos" WideLogo="Assets\logos\herebedragons310x150.png" ShortName="Dragons" />
+        <SplashScreen Image="Assets\logos\herebedragons620x300.png" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="privateNetworkClientServer" />
+  </Capabilities>
+</Package>

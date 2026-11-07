@@ -1,0 +1,16 @@
+﻿<SettingsViewModel xmlns="using:Dragons.ViewModels" xmlns:game="using:Dragons.GameLogic"
+  BoardSizeIndex="4" 
+  PlayerOneIsAiSetting="True" 
+  PlayerOneAiSearchDepthSetting="3"
+  PlayerTwoIsAiSetting="True" 
+  PlayerTwoAiSearchDepthSetting="4">
+  <SettingsViewModel.GameViewModel>
+    <GameViewModel 
+      PlayerOne="Human" 
+      PlayerTwo="Ai1">
+      <GameViewModel.Game>
+        <game:Game RowCount="20" ColumnCount="20"/>
+      </GameViewModel.Game>  
+    </GameViewModel>
+  </SettingsViewModel.GameViewModel>
+</SettingsViewModel>

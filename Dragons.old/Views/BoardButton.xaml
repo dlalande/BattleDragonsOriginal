@@ -1,0 +1,92 @@
+﻿<UserControl
+    x:Class="Dragons.Views.BoardButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Dragons.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500"
+    d:DesignWidth="500">
+    
+    <Grid>
+        <Button x:Name="ButtonButton" BorderThickness="0" Click="ButtonButton_OnClick">
+            <Grid>
+                <Image x:Name="GroundImage" Visibility="Visible" Source="/Assets/buttons/mudlight.png"></Image>
+                <Image x:Name="DragonImage" Visibility="Visible" Opacity="0"></Image>
+                <Image x:Name="DeadImage" Visibility="Visible" Opacity="0" Source="/Assets/buttons/bodybone.png"></Image>
+                <Image x:Name="ManaImage" Visibility="Visible" Opacity="0" Source="/Assets/buttons/mana.png"></Image>
+                <Image x:Name="ManaEmptyImage" Visibility="Visible" Opacity="0" Source="/Assets/buttons/emptymana.png"></Image>
+                <Image x:Name="FogImage" Visibility="Visible" Source="/Assets/buttons/muddark.png"></Image>
+                <Image x:Name="SpellImage" Visibility="Visible" Opacity="0" Source="/Assets/buttons/fire.png"></Image>
+                <Image x:Name="SelectImage" Visibility="Visible" Opacity="0" Source="/Assets/buttons/FireBall-psd32690.png"></Image>
+            </Grid>
+        </Button>
+        <Grid.Resources>
+            <Storyboard x:Name="Scorch1">
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="GroundImage" Storyboard.TargetProperty="(Image.Source)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.7000000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <BitmapImage UriSource="ms-appx:///Assets/buttons/scorched1.jpg" />
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Name="Scorch2">
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="GroundImage" Storyboard.TargetProperty="(Image.Source)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.7000000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <BitmapImage UriSource="ms-appx:///Assets/buttons/scorched2.png" />
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Name="Scorch3">
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="GroundImage" Storyboard.TargetProperty="(Image.Source)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.7000000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <BitmapImage UriSource="ms-appx:///Assets/buttons/scorched3.png" />
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <!---->
+            <Storyboard x:Name="Spell">
+                <DoubleAnimationUsingKeyFrames  BeginTime="00:00:00" Duration="00:00:01.5000000" Storyboard.TargetName="SpellImage" Storyboard.TargetProperty="(Image.Opacity)">
+                    <LinearDoubleKeyFrame Value="1" KeyTime="00:00:00.5000000" />
+                    <LinearDoubleKeyFrame Value="0" KeyTime="00:00:01.0000000" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Name="Mana">
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00.75" Duration="00:00:01"  Storyboard.TargetName="ManaImage" Storyboard.TargetProperty="(Image.Opacity)">
+                    <LinearDoubleKeyFrame Value="1" KeyTime="00:00:00.5000000" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Name="ManaConsume">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:03.5000000" Storyboard.TargetName="ManaImage" Storyboard.TargetProperty="(Image.Opacity)">
+                    <LinearDoubleKeyFrame Value="1" KeyTime="00:00:00.5000000" />
+                    <LinearDoubleKeyFrame Value="0" KeyTime="00:00:01.0000000" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:01.5000000" Duration="00:00:00.5000000"  Storyboard.TargetName="ManaEmptyImage" Storyboard.TargetProperty="(Image.Opacity)">
+                    <LinearDoubleKeyFrame Value="1" KeyTime="00:00:00.0000000" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Name="RevealPiece">
+                <DoubleAnimationUsingKeyFrames  BeginTime="00:00:00" Duration="00:00:01.5000000" Storyboard.TargetName="FogImage" Storyboard.TargetProperty="(Image.Opacity)">
+                    <LinearDoubleKeyFrame Value="0" KeyTime="00:00:00.5000000" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Name="KillPiece">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:03.5000000" Storyboard.TargetName="DragonImage" Storyboard.TargetProperty="(Image.Opacity)">
+                    <LinearDoubleKeyFrame Value="1" KeyTime="00:00:00.5000000" />
+                    <LinearDoubleKeyFrame Value="0" KeyTime="00:00:01.0000000" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:01.5000000" Duration="00:00:00.5000000"  Storyboard.TargetName="DeadImage" Storyboard.TargetProperty="(Image.Opacity)">
+                    <LinearDoubleKeyFrame Value="1" KeyTime="00:00:00.0000000" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            
+        </Grid.Resources>
+    </Grid>
+    
+</UserControl>

@@ -1,0 +1,477 @@
+﻿<common:LayoutAwarePage
+  x:Name="pageRoot"
+  x:Class="Dragons.Views.HelpPage"
+  DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="using:Dragons.Views"
+  xmlns:common="using:Dragons.Common"
+  xmlns:vm="using:Dragons.ViewModels"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d">
+
+  <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+  <Grid Style="{StaticResource LayoutRootStyle}">
+
+    <Grid.Background>
+      <ImageBrush ImageSource="../Assets/darkbackground.jpg" Stretch="UniformToFill"/>
+    </Grid.Background>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="140"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <TextBlock x:Name="pageTitle" Text="Here Be Dragons rules" Foreground="AntiqueWhite" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false"/>
+        </Grid>
+        <ScrollViewer x:Name="scrollViewer"
+      Style="{StaticResource HorizontalScrollViewerStyle}" Grid.Row="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <!-- How to Play -->
+                <RichTextBlock x:Name="richTextBlock" 
+          Width="500" Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="120,0,0,80"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" Grid.Column="0" ScrollViewer.HorizontalScrollMode="Enabled">
+
+                    <Paragraph Margin="0,0,0,15">
+                        Here Be Dragons transports you to a time where Magic was in abundance,
+            Dragons roamed the Earth, and Factions of Wizards were at war. Taking control of
+            a mighty Wizard, you direct your Dragons into battle against your
+            opponent for dominance of the divided realm.
+                    </Paragraph>
+
+                    <Paragraph Margin="0,0,0,15">
+                        May the Wizard with the longest beard be victorious!
+                    </Paragraph>
+
+                    <Paragraph Margin="0,0,0,10">
+                        <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">How to play</Bold>
+                    </Paragraph>
+
+                    <Paragraph Margin="0,0,0,15">
+                        You and your opponent are provided with two boards. The smaller one shows the locations
+            of your Dragon army, potions, and retaliatory dragon. The larger displays your opponent's board shrouded in a fog of war.
+            As you take turns, you will gradually uncover the contents of each other’s boards. Be the first 
+            to kill off all of your opponent’s Dragon army and claim victory.
+                    </Paragraph>
+
+                    <Paragraph Margin="0,0,0,15">
+                        Begin a match by either Starting a new game or continuing one in progress.
+            Players will take turns using various magical powers which cost mana.
+            30 Mana is distributed to both players at the beginning of the match and gain an Aditional 10 Mana every round.
+            Use your Mana to attack your enemies and kill their dragons using special actions; however, be warned that hidden around the map are 4 potions which grant you Mana
+            if scanned but will be broken if hit. Also there is a retalitory dragon not part of your opponents army. If you hit this dragon it will return fire upon one of your dragons.
+                    </Paragraph>
+                </RichTextBlock>
+            <!-- Actions -->
+                <Grid Grid.Column="1" Margin="20,0,0,80" Width="500">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="88"/>
+                        <RowDefinition Height="88"/>
+                        <RowDefinition Height="88"/>
+                        <RowDefinition Height="88"/>
+                        <RowDefinition Height="88"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="400"/>
+                    </Grid.ColumnDefinitions>
+                    <RichTextBlock x:Name="richTextBlockActions" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="0,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Paragraph Margin="0,0,0,10">
+                            <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">Actions</Bold>
+                        </Paragraph>
+                        <Paragraph Margin="0,0,0,15">
+                            You have access to various abilities and attacks. Their power is
+            determined by the range of effectiveness. Powerful actions require more
+            Mana than weaker ones.
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/bolt.png" Stretch="Uniform" Grid.Row="1" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockBolt" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Strike a single cell with your standard lightning attack
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/explode.png" Stretch="Uniform" Grid.Row="2" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockExplode" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Singe a 2x2 region with an explosive charge
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/horizontal blast.png" Stretch="Uniform" Grid.Row="3" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockHoriz" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Attacks across the Row of your choice. You can choose the direction of the attack. Attack stops when the first object in its path is hit
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/vertical blast.png" Stretch="Uniform" Grid.Row="4" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockVert" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,15">
+                            Attacks across the Column of your choice. You can choose the direction of the attack. Attack stops when the first object in its path is hit
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/dragonfury.png" Stretch="Uniform" Grid.Row="5" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockDragon" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Angered Dragons lay waste to 5 randomly chosen sets of 2x2 regions
+                        </Paragraph>
+                    </RichTextBlock>
+                </Grid>
+            <!-- Abilities -->
+                <Grid Grid.Column="2" Margin="20,0,0,80" Width="500">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="88"/>
+                        <RowDefinition Height="88"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="400"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Assets/Icons/rest.png" Stretch="Uniform" Grid.Row="0" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockRest" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,15">
+                            Do nothing in order save Mana
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/scan.png" Stretch="Uniform" Grid.Row="1" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockScan" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,15">
+                            Temporarily reveals a 3x3 region of the game board and captures any potions you find.
+                        </Paragraph>
+                    </RichTextBlock>
+                </Grid>
+                <!-- Dragons -->
+                <Grid Grid.Column="3" Margin="20,0,0,80" Width="500">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="400"/>
+                    </Grid.ColumnDefinitions>
+                    <RichTextBlock x:Name="richTextBlockDragons" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="0,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Paragraph Margin="0,0,0,10">
+                            <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">Dragons</Bold>
+                        </Paragraph>
+                        <Paragraph Margin="0,0,0,15">
+                            Each player has an army of 5 Dragons. They vary in size and shape.
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/dragon2.png" Stretch="Uniform" Grid.Row="1" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockDragon2" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Occupies two adjacent cells aligned vertically or horizontally
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/dragon3a.png" Stretch="Uniform" Grid.Row="2" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockDragon3a" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Occupies 3 cells aligned vertically or horizontally in a straight line
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/dragon3b.png" Stretch="Uniform" Grid.Row="3" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockDragon3b" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Occupies 3 cells in an L shape
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/dragon4.png" Stretch="Uniform" Grid.Row="4" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockDragon4" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,15">
+                            Occupies a 2x2 square of adjacent cells
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/dragon5.png" Stretch="Uniform" Grid.Row="5" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockDragon5" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            A C-shaped arrangement where 3 cells aligned in a straight line, and 2 cells at both ends on the same side of the line
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/dragon_retaliate.png" Stretch="Uniform" Grid.Row="6" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockDragonRetaliate" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Occupies a single cell and if struck by an attack will return fire on one of your dragons
+                        </Paragraph>
+                    </RichTextBlock>
+                </Grid>
+                <!-- Mana -->
+                <Grid Grid.Column="4" Margin="20,0,0,80" Width="500">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="88"/>
+                        <RowDefinition Height="88"/>
+                        <RowDefinition Height="88"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="400"/>
+                    </Grid.ColumnDefinitions>
+                    <RichTextBlock x:Name="richTextBlockMana" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="0,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Paragraph Margin="0,0,0,10">
+                            <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">Dragons</Bold>
+                        </Paragraph>
+                        <Paragraph Margin="0,0,0,15">
+                            Potions award your Wizard with additional mana points.
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/smallmana.png" Stretch="Uniform" Grid.Row="1" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockSmallMana" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Awards 20 Mana pts
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/mediummana.png" Stretch="Uniform" Grid.Row="2" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockMediumMana" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Awards 25 Mana pts
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="/Assets/Icons/largemana.png" Stretch="Uniform" Grid.Row="3" Grid.Column="0"/>
+                    <RichTextBlock x:Name="richTextBlockLargeMana" 
+           Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="10,0,0,0"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                        <Paragraph Margin="0,0,0,11">
+                            Awards 30 Mana pts
+                        </Paragraph>
+                    </RichTextBlock>
+                </Grid>
+                <!-- Tips -->
+            </Grid>
+        </ScrollViewer>
+        <!--<ScrollViewer x:Name="scrollViewer"
+      Style="{StaticResource HorizontalScrollViewerStyle}" Grid.Row="1">
+
+      <common:RichTextColumns x:Name="richTextColumns" Margin="0,0,80,0">
+        
+        <RichTextBlock x:Name="richTextBlock" 
+          Width="450" Foreground="AntiqueWhite" FontSize="17" FontWeight="Light" Margin="120,0,40,80"
+          Style="{StaticResource BasicRichTextStyle}" IsTextSelectionEnabled="False">
+          
+          <Paragraph Margin="0,0,0,15">
+            Here Be Dragons transports you to a time where Magic was in abundance,
+            Dragons roamed the Earth, and Factions of Wizards were at war. Taking control of
+            a mighty Wizard, you direct your Dragons into battle against your
+            opponent for dominance of the divided realm.
+          </Paragraph>
+            
+          <Paragraph Margin="0,0,0,15">
+            May the Wizard with the longest beard be victorious!
+          </Paragraph>
+            
+          <Paragraph Margin="0,0,0,15">
+               <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">How to play</Bold>
+          </Paragraph>
+            
+          <Paragraph Margin="0,0,0,15">
+            You and your opponent are provided with two boards. The smaller one shows the locations
+            of your Dragon army, potions, and retaliatory dragon. The larger displays your opponent's board shrouded in a fog of war.
+            As you take turns, you will gradually uncover the contents of each other’s boards. Be the first 
+            to kill off all of your opponent’s Dragon army and claim victory.
+          </Paragraph>
+            
+          <Paragraph Margin="0,0,0,15">
+            Begin a match by either Starting a new game or continuing one in progress.
+            Players will take turns using various magical powers which cost mana.
+            30 Mana is distributed to both players at the beginning of the match and gain an Aditional 10 Mana every round.
+            Use your Mana to attack your enemies and kill their dragons using special actions; however, be warned that hidden around the map are 4 potions which grant you Mana
+            if scanned but will be broken if hit. Also there is a retalitory dragon not part of your opponents army. If you hit this dragon it will return fire upon one of your dragons.
+          </Paragraph>
+
+          <Paragraph Margin="0,0,0,15">
+                        <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">Actions</Bold>
+          </Paragraph>
+
+          <Paragraph Margin="0,0,0,15">
+            You have access to various abilities and attacks. Their power is
+            determined by the range of effectiveness. Powerful actions require more
+            Mana than weaker ones.
+          </Paragraph>
+          <Paragraph Margin="0,0,0,15">
+            <Underline>Attacks</Underline>
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Rest:</Bold> 0 pts – Do nothing in order save Mana.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Bolt:</Bold> 5 pts – Strike a single cell with your standard lightning attack.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Explode:</Bold> 20 pts – Singe a 2x2 region with an explosive charge.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Horizontal Beam:</Bold> 35 pts – Attacks across the Row of your choice. You can choose the direction of the attack. Attack stops when the first object in its path is hit.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Vertical Beam:</Bold> 35 pts – Attacks across the Column of your choice. You can choose the direction of the attack. Attack stops when the first object in its path is hit.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Dragon:</Bold> 60 pts – Angered Dragons lay waste to 5 randomly chosen sets of 2x2 regions.
+            <LineBreak/>
+            <LineBreak/>
+            <Underline>Abilities:</Underline>
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Scan:</Bold> 15 pts - Temporarily reveals a 3x3 region of the game board and captures any potions you find.
+          </Paragraph>
+          <Paragraph Margin="0,0,0,15">
+                        <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">Dragons</Bold>
+          </Paragraph>
+                    <Paragraph Margin="0,0,0,15">
+                        Each player has an army of 5 Dragons. They vary in size and shape.</Paragraph>
+                        <Paragraph Margin="0,0,0,15">
+                        <LineBreak/>
+                        <Bold>Dragon 2</Bold> - Occupies two adjacent cells aligned vertically or horizontally.
+                        <LineBreak/>
+                        <LineBreak/>
+                            <Bold>Dragon 3</Bold> - Occupies 3 cells aligned vertically or horizontally in a straight line
+                        <LineBreak/>
+                        <LineBreak/>
+                                <Bold>Dragon 3</Bold> - Occupies 3 cells in an L shape
+                        <LineBreak/>
+                        <LineBreak/>
+                                    <Bold>Dragon 4</Bold> - Occupies a 2x2 square of adjacent cells
+                        <LineBreak/>
+                        <LineBreak/>
+                                        <Bold>Dragon 5</Bold> - A C-shaped arrangement where 3 cells aligned in a straight line, and 2 cells at both ends on the same side of the line.
+                        <LineBreak/>
+                        <LineBreak/>
+                                            <Bold>Retaliatory Dragon
+                                                </Bold>- Occupies a single cell and if struck by an attack will return fire on one of your dragons.
+                    </Paragraph>
+                    <Paragraph Margin="0,0,0,15">
+                        <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">Mana</Bold>
+                    </Paragraph>
+                    <Paragraph Margin="0,0,0,15">
+                        Potions award your Wizard with additional mana points.</Paragraph>
+                        <Paragraph Margin="0,0,0,15">
+                            <LineBreak/>
+                        <Bold>Small Potion</Bold> - Awards 20 Mana pts if scanned. If struck by an attack it will break and no longer be usable.
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Bold>Medium Potion</Bold> - Awards 25 Mana pts. There are two of these on the board.
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Bold>Large Potion</Bold> - Awards 30 Mana pts
+                    </Paragraph>
+                    <Paragraph Margin="0,0,0,15">
+                        <Bold FontSize="25" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand">Tips</Bold>
+                    </Paragraph>
+                    <Paragraph Margin="0,0,0,15">
+                        TBD
+                    </Paragraph>
+                </RichTextBlock>
+
+        <common:RichTextColumns.ColumnTemplate>
+          <DataTemplate>
+            <RichTextBlockOverflow
+              Width="450" Margin="40,0,40,80"/>
+          </DataTemplate>
+        </common:RichTextColumns.ColumnTemplate>
+      </common:RichTextColumns>
+
+    </ScrollViewer>-->
+
+
+
+    <VisualStateManager.VisualStateGroups>
+
+      <!-- Visual states reflect the application's view state -->
+      <VisualStateGroup x:Name="ApplicationViewStates">
+        <VisualState x:Name="FullScreenLandscape"/>
+        <VisualState x:Name="Filled"/>
+
+        <!-- The back button respects the narrower 100-pixel margin convention for portrait -->
+        <VisualState x:Name="FullScreenPortrait">
+          <Storyboard>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+              <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+            </ObjectAnimationUsingKeyFrames>
+          </Storyboard>
+        </VisualState>
+
+        <!-- The back button and title have different styles when snapped -->
+        <VisualState x:Name="Snapped">
+          <Storyboard>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+              <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+              <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="richTextBlock" Storyboard.TargetProperty="Width" 
+              Duration="0" To="260"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextColumns" Storyboard.TargetProperty="Margin">
+              <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextBlock" Storyboard.TargetProperty="Margin">
+              <DiscreteObjectKeyFrame KeyTime="0" Value="30,0,30,40"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="scrollViewer" Storyboard.TargetProperty="Style">
+              <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource VerticalScrollViewerStyle}"/>
+            </ObjectAnimationUsingKeyFrames>
+          </Storyboard>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</common:LayoutAwarePage>

@@ -1,0 +1,96 @@
+﻿<common:LayoutAwarePage
+  x:Name="pageRoot"
+  x:Class="Dragons.Views.StartPage"
+  DataContext="{Binding DefaultViewModel[SettingsViewModel], RelativeSource={RelativeSource Self}}"
+  d:DataContext="{d:DesignData Source=SampleData/SettingsSampleData.xaml}"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:common="using:Dragons.Common"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d" Loaded="OnLoad">
+
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource TextButtonStyle}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="FontSize" Value="26.667"/>
+            <Setter Property="FontWeight" Value="ExtraBold"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource BasicTextStyle}">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style x:Key="snappedButtonStyle" TargetType="Button" BasedOn="{StaticResource TextButtonStyle}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="15"/>
+        </Style>
+    </Page.Resources>
+
+    <!--
+      This grid acts as a root panel for the page that defines two rows:
+      * Row 0 contains the back button and page title
+      * Row 1 contains the rest of the page layout
+  -->
+    <Grid Style="{StaticResource LayoutRootStyle}">
+
+        <Grid.Background>
+            <ImageBrush ImageSource="../Assets/newbackground_no_title.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <StackPanel Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Assets/scrollbackground.png" Stretch="Fill"/>
+            </StackPanel.Background>
+<!--            <Button x:Name="sampleGameboardButton" Foreground="Black" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand" Content="Sample game board" Tag="sample" Click="ButtonClick" Margin="30,40,30,0"/>-->
+            <Button x:Name="newGameButton"  Foreground="Black" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand" Content="Start a new game" Tag="new" Click="ButtonClick" Margin="30,40,30,0"/>
+            <Button x:Name="learnButton" Foreground="Black" FontFamily="Assets/fonts/CelticHand.ttf#Celtic Hand" Content="How to play" Tag="learn" Click="ButtonClick" Margin="30,40,30,40"/>
+        </StackPanel>
+        
+        <Image HorizontalAlignment="Right" Height="229" Margin="0,10,10,0" VerticalAlignment="Top" Width="478" Grid.RowSpan="2" Source="/Assets/title.png"/>
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait"/>
+
+                <!-- The back button and title have different styles when snapped -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="resumeButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource snappedButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="newGameButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource snappedButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="learnButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource snappedButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</common:LayoutAwarePage>
